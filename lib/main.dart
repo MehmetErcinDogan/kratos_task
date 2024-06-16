@@ -1,6 +1,5 @@
+import 'pages/launch_page.dart';
 import 'package:flutter/material.dart';
-import 'package:kratos_task/pages/create_account_page.dart';
-// import 'pages/launch_page.dart';
 
 void main() {
   runApp(const MainApp());
@@ -11,10 +10,12 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      // home: LaunchPage(),
-      home: CreateAccountPage()
+      theme: ThemeData( // set font
+        fontFamily: 'Times',
+      ),
+      home: const LaunchPage(), // Starts app from launchpage which is imported 
     );
   }
 }

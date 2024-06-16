@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'create_account_page.dart';
-import 'home_page.dart';
+import 'create_account_page.dart'; // going to redirect
+import 'home_page.dart'; // going to redirect
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -9,12 +9,12 @@ class LoginPage extends StatefulWidget {
 // ignore: library_private_types_in_public_api
   _LoginPageState createState() => _LoginPageState();
 }
-
+// that page is stateful because of the password visible/unvisible option
 class _LoginPageState extends State<LoginPage> {
-  bool _obscureText = true;
-  var chckBx = true;
+  bool _obscureText = true; // variable for set password text is shown or not shown
+  var chckBx = true; // var for checkBox. 
 
-  void _togglePasswordVisibility() {
+  void _togglePasswordVisibility() { // toggle function for password visibility
     setState(() {
       _obscureText = !_obscureText;
     });
@@ -23,28 +23,28 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
+      body: SafeArea( // puts in safe area(under the notch of the phone)
         child: Stack(
           fit: StackFit.expand,
           children: [
-            Image.asset(
+            Image.asset( // background placed
               'assets/Background.png',
               fit: BoxFit.fill,
             ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+            Column( // created a column and other widgets gonna place inside of that column
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Image.asset(
+                Image.asset( // puts logo
                   'assets/Logo.png',
                   width: 150,
                   height: 150,
                 ),
-                const SizedBox(height: 20),
-                Padding(
+                const SizedBox(height: 20), // give space
+                Padding( // adds padding to all elements
                   padding: const EdgeInsets.symmetric(horizontal: 32.0),
                   child: Column(
                     children: [
-                      TextField(
+                      TextField( // Textfield for get email address
                         style: TextStyle(color: Colors.grey[700]),
                         decoration: InputDecoration(
                           filled: true,
@@ -58,7 +58,7 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                       ),
                       const SizedBox(height: 10),
-                      TextField(
+                      TextField(// for password
                         obscureText: _obscureText,
                         style: TextStyle(color: Colors.grey[700]),
                         decoration: InputDecoration(
@@ -82,7 +82,7 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                       ),
                       const SizedBox(height: 10),
-                      Row(
+                      Row(// row for place, check box, remember me text and forgot password text
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Row(
@@ -109,11 +109,11 @@ class _LoginPageState extends State<LoginPage> {
                         ],
                       ),
                       const SizedBox(height: 20),
-                      ElevatedButton(
+                      ElevatedButton( // login now button
                         onPressed: () {
                           Navigator.pushReplacement(
                               context,
-                              MaterialPageRoute(
+                              MaterialPageRoute( // redirect home page
                                   builder: (context) => const HomePage()));
                         },
                         style: ElevatedButton.styleFrom(
@@ -129,7 +129,7 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                       ),
                       const SizedBox(height: 20),
-                      Row(
+                      Row( // row for text don't have account and create button
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text('Don\'t have an account?',
@@ -139,7 +139,7 @@ class _LoginPageState extends State<LoginPage> {
                               Navigator.pushReplacement(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) =>
+                                      builder: (context) => // redirect create account page
                                           const CreateAccountPage()));
                             },
                             child: Text('Create one',

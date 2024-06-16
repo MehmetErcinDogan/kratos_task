@@ -22,7 +22,9 @@ class CreateAccountPage extends StatelessWidget {
                     color: Colors.amber[300],
                     fontSize: 24,
                     fontWeight: FontWeight.bold)),
-            const SizedBox(height: 40,),
+            const SizedBox(
+              height: 40,
+            ),
             TextField(
               style: TextStyle(color: Colors.grey[700]),
               decoration: InputDecoration(
