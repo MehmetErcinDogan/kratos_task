@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'pages/launch_page.dart';
+import 'package:kratos_task/pages/create_account_page.dart';
+// import 'pages/launch_page.dart';
 
 void main() {
   runApp(const MainApp());
@@ -12,7 +13,8 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: LaunchPage(),
-    ); // Loads Launch page
+      // home: LaunchPage(),
+      home: CreateAccountPage()
+    );
   }
 }
