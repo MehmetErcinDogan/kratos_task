@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'create_account_page.dart'; // going to redirect
 import 'home_page.dart'; // going to redirect
+// firebase packages
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -124,7 +127,25 @@ class _LoginPageState extends State<LoginPage> {
                       const SizedBox(height: 20),
                       ElevatedButton( // login now button
                         onPressed: () {
-                          if(_emailController.text == "mehmet.ercin.dogan@outlook.com" && _passwordController.text == "1234"){ // checks password and email
+                          try {
+                            UserCredential userCredential = await FirebaseAuth.instance.signInWithEmailAndPassword( // with firebase
+                              email: _emailController.text,
+                              password: _passwordController.text,
+                            );
+                            // sucessfull state
+                            print('Signed in: ${userCredential.user?.email}');
+                            Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute( // redirect home page
+                                  builder: (context) => const HomePage()));
+                          } on FirebaseAuthException catch (e) {
+                            // error state
+                            print('Failed with error code: ${e.code}');
+                            print(e.message);
+                            _clearTextFields();
+                          }
+
+                          if(_emailController.text == "mehmet.ercin.dogan@outlook.com" && _passwordController.text == "1234"){ // without firebase 
                             Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute( // redirect home page

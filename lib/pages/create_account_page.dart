@@ -1,9 +1,13 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:kratos_task/pages/login_page.dart';
 import 'home_page.dart';
 
 class CreateAccountPage extends StatelessWidget {
-  const CreateAccountPage({super.key});
+  CreateAccountPage({super.key});
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController= TextEditingController();
+
 // same design structure used with login page
   @override
   Widget build(BuildContext context) {
@@ -54,6 +58,7 @@ class CreateAccountPage extends StatelessWidget {
             ),
             const SizedBox(height: 10),
             TextField(
+              controller:_emailController,
               style: TextStyle(color: Colors.grey[700]),
               decoration: InputDecoration(
                 filled: true,
@@ -68,6 +73,7 @@ class CreateAccountPage extends StatelessWidget {
             ),
             const SizedBox(height: 10),
             TextField(
+              controller: _passwordController,
               style: TextStyle(color: Colors.grey[700]),
               decoration: InputDecoration(
                 filled: true,
@@ -83,6 +89,14 @@ class CreateAccountPage extends StatelessWidget {
             const Spacer(),
             ElevatedButton(
               onPressed: () {
+              try{
+                FirebaseAuth.instance.createUserWithEmailAndPassword(
+                  email: _emailController.text,
+                  password: _passwordController.text,
+                );
+              }on FirebaseAuthException catch(e){
+                print("Error . . .")
+              }
                 Navigator.pushReplacement(context,
                     MaterialPageRoute(builder: (context) => const HomePage()));
               },
