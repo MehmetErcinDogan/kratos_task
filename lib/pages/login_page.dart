@@ -56,6 +56,7 @@ class _LoginPageState extends State<LoginPage> {
                   child: Column(
                     children: [
                       TextField( // Textfield for get email address
+                        controller: _emailController,
                         style: TextStyle(color: Colors.grey[700]),
                         decoration: InputDecoration(
                           filled: true,
@@ -70,6 +71,7 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                       const SizedBox(height: 10),
                       TextField(// for password
+                        controller: _passwordController,
                         obscureText: _obscureText,
                         style: TextStyle(color: Colors.grey[700]),
                         decoration: InputDecoration(
