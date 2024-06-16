@@ -4,7 +4,7 @@ import 'home_page.dart';
 
 class CreateAccountPage extends StatelessWidget {
   const CreateAccountPage({super.key});
-
+// same design structure used with login page
   @override
   Widget build(BuildContext context) {
     return Scaffold(

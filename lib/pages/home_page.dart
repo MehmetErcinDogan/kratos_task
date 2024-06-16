@@ -3,7 +3,7 @@ import 'login_page.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
-
+// same design structure used with login page
   @override
   Widget build(BuildContext context) {
     return Scaffold(
