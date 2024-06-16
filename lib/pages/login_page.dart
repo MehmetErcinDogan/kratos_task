@@ -14,10 +14,21 @@ class _LoginPageState extends State<LoginPage> {
   bool _obscureText = true; // variable for set password text is shown or not shown
   var chckBx = true; // var for checkBox. 
 
+  //define text editing controllers
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+
+
   void _togglePasswordVisibility() { // toggle function for password visibility
     setState(() {
       _obscureText = !_obscureText;
     });
+  }
+
+  // function to clear text fields
+  void _clearTextFields(){
+    _emailController.clear();
+    _passwordController.clear();
   }
 
   @override
@@ -111,10 +122,15 @@ class _LoginPageState extends State<LoginPage> {
                       const SizedBox(height: 20),
                       ElevatedButton( // login now button
                         onPressed: () {
-                          Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute( // redirect home page
-                                  builder: (context) => const HomePage()));
+                          if(_emailController.text == "mehmet.ercin.dogan@outlook.com" && _passwordController.text == "1234"){ // checks password and email
+                            Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute( // redirect home page
+                                    builder: (context) => const HomePage()));
+                          }else{
+                            _clearTextFields();
+                            print("Error worg password or email");
+                          }
                         },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.amber[300],
